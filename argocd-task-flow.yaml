@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: task-flow
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: sed -i 's#git@github-task-flow-gitops:kunals30/task-flow-gitops.git#https://github.com/kunals30/task-flow-gitops.git#' argocd-task-flow.yaml
+    targetRevision: main
+    path: .
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: task-flow
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
