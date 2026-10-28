@@ -17,7 +17,7 @@ spec:
         - name: nexus-registry-secret
       containers:
         - name: task-flow
-          image: 10.0.1.212:8084/task-flow:6
+          image: 10.0.1.212:8084/task-flow:7
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
